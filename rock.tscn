@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dluy8wmc4fs6h"]
+
+[ext_resource type="Script" path="res://rock.gd" id="1_7c4yo"]
+[ext_resource type="Texture2D" uid="uid://cje4llmx2wafv" path="res://PNG/rock.png" id="2_6wp6d"]
+
+[node name="rock" type="Area2D"]
+script = ExtResource("1_7c4yo")
+speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6wp6d")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-54, 118, 8, -119, 16, -119, 53, 117)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

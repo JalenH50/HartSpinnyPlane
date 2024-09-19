@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmu18nk6glpwn"
+path="res://.godot/imported/impactPlank_medium_000.ogg-39b12d54cba4eb265517370f609c609e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Impact Sounds/Audio/impactPlank_medium_000.ogg"
+dest_files=["res://.godot/imported/impactPlank_medium_000.ogg-39b12d54cba4eb265517370f609c609e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dgcgaxter2xre"
+path="res://.godot/imported/Three Red Hearts - Deep Blue.ogg-839953cc3986c5eae71cec00c467d2fc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Three Red Hearts - Deep Blue.ogg"
+dest_files=["res://.godot/imported/Three Red Hearts - Deep Blue.ogg-839953cc3986c5eae71cec00c467d2fc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

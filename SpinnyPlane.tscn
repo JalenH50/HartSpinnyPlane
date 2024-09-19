@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn83it41lau8g"]
+
+[ext_resource type="Script" path="res://flappyController.gd" id="1_tmly4"]
+[ext_resource type="AudioStream" uid="uid://cy8tkrbxqewr7" path="res://Music/Three Red Hearts - Out of Time.ogg" id="6_4yijr"]
+[ext_resource type="AudioStream" uid="uid://t5nljoslg7j0" path="res://Impact Sounds/Audio/impactPlate_heavy_002.ogg" id="7_v2qr5"]
+
+[sub_resource type="Animation" id="Animation_3uo3e"]
+resource_name = "slide in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(577, -50), Vector2(577, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_62uoy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(577, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oo3k2"]
+_data = {
+"RESET": SubResource("Animation_62uoy"),
+"slide in": SubResource("Animation_3uo3e")
+}
+
+[node name="SpinnyPlane" type="Node2D"]
+position = Vector2(164, 264)
+script = ExtResource("1_tmly4")
+
+[node name="rock_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="sfx" type="Node2D" parent="."]
+
+[node name="bgm" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("6_4yijr")
+autoplay = true
+
+[node name="thud" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("7_v2qr5")
+
+[node name="GameOver" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 577.0
+offset_right = 577.0
+
+[node name="Label" type="Label" parent="GameOver"]
+layout_mode = 0
+offset_top = -60.0
+offset_right = 87.0
+offset_bottom = -30.0
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GameOver"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Play Again"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver"]
+libraries = {
+"": SubResource("AnimationLibrary_oo3k2")
+}
+
+[connection signal="timeout" from="rock_timer" to="." method="_on_rock_timer_timeout"]
+[connection signal="pressed" from="GameOver/Button" to="." method="_on_button_pressed"]
